@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const path = require('path');
 const express = require('express');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const passport = require('passport');
@@ -36,6 +37,7 @@ app.use(session({
   secret: 'secret',
   resave: false,
   saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
 
 /* Passport Middleware */
@@ -53,4 +55,4 @@ app.listen(PORT, () => {
   console.log(`server up and running in ${process.env.NODE_ENV} on port ${PORT}`);
 });
 
-// 109:19
+// 121:08
