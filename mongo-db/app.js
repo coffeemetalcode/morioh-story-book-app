@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const MongoStore = require('connect-mongo')(session);
 
 const connectDB = require('./config/db');
 
@@ -52,4 +53,4 @@ app.listen(PORT, () => {
   console.log(`server up and running in ${process.env.NODE_ENV} on port ${PORT}`);
 });
 
-// 59:46
+// 109:19
