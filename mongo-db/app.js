@@ -23,6 +23,10 @@ const PORT = process.env.PORT || 4002;
 
 const app = express();
 
+/* Body Parser */
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 /* Logging */
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -50,9 +54,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 /* Routes */
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
+app.use('/stories', require('./routes/stories'));
 
 app.listen(PORT, () => {
   console.log(`server up and running in ${process.env.NODE_ENV} on port ${PORT}`);
 });
 
-// 121:08
+// 1:29:05 <-- Stories in the database are not showing up in the handlebars table page
